@@ -1,0 +1,5 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes

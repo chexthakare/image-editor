@@ -1,0 +1,5 @@
+# Deny direct access to all files in uploads directory
+<FilesMatch "\.(php|php5|phtml|phar)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

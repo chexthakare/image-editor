@@ -1,0 +1,412 @@
+:root {
+    --primary: #0d6efd;
+    --primary-dark: #0b5ed7;
+    --bg-light: #f0f2f5;
+    --bg-white: #ffffff;
+    --border: #e0e3e8;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg-light);
+    color: #1a1d23;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.app-header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.app-header h1 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -0.3px;
+}
+
+/* Editor Wrapper (two columns) */
+.editor-wrapper {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Left Panel - Workspace */
+.workspace-panel {
+    flex: 1;
+    min-width: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+}
+
+.workspace-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Upload Placeholder */
+.upload-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 3px dashed var(--border);
+    border-radius: var(--radius);
+    margin: 20px;
+    transition: var(--transition);
+}
+
+.upload-placeholder:hover {
+    border-color: var(--primary);
+    background: rgba(13, 110, 253, 0.03);
+}
+
+.drag-over .upload-placeholder {
+    border-color: var(--primary);
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.upload-placeholder i {
+    opacity: 0.6;
+}
+
+/* Crop Container */
+.crop-container {
+    width: 100%;
+    height: 100%;
+    background: #1a1d23;
+}
+
+.crop-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+/* Perspective Overlay */
+.perspective-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: #1a1d23;
+    overflow: hidden;
+    cursor: default;
+}
+
+.perspective-overlay canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Corner handle cursor when dragging active */
+.perspective-overlay.dragging {
+    cursor: grabbing;
+}
+.perspective-overlay .corner-hover {
+    cursor: grab;
+}
+
+/* Cropper.js overrides */
+.cropper-view-box,
+.cropper-face {
+    border-radius: 2px;
+}
+
+.cropper-line {
+    background-color: var(--primary);
+}
+
+.cropper-point {
+    background-color: var(--primary);
+    width: 10px;
+    height: 10px;
+}
+
+.cropper-point.point-se {
+    width: 12px;
+    height: 12px;
+}
+
+/* Right Panel - Controls */
+.controls-panel {
+    width: 320px;
+    min-width: 320px;
+    background: var(--bg-white);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.controls-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.controls-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.controls-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* Control Section */
+.control-section {
+    margin-bottom: 20px;
+}
+
+.control-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Button Groups */
+.btn-group-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.btn-group-custom .btn {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    border-width: 1.5px;
+    transition: var(--transition);
+}
+
+.btn-group-custom .btn i {
+    margin-right: 4px;
+    font-size: 0.85rem;
+}
+
+.btn-group-custom .btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+/* Section buttons */
+.control-section .d-grid .btn {
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    border-width: 1.5px;
+    transition: var(--transition);
+}
+
+.control-section .d-grid .btn i {
+    font-size: 0.9rem;
+}
+
+/* Output buttons special */
+.control-section .btn-success {
+    font-weight: 600;
+}
+
+.control-section .btn-primary {
+    font-weight: 600;
+}
+
+/* Effect buttons */
+.effect-group {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 10px;
+}
+
+.effect-group .btn {
+    padding: 6px 2px;
+    font-size: 0.68rem;
+}
+
+.effect-group .btn i {
+    font-size: 0.85rem;
+    display: block;
+    margin: 0 auto 2px;
+}
+
+.effect-group .btn.active {
+    background: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+/* Sliders */
+.slider-group {
+    margin-top: 2px;
+}
+
+.slider-row {
+    margin-bottom: 8px;
+}
+
+.slider-row:last-child {
+    margin-bottom: 0;
+}
+
+.slider-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #495057;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.slider-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slider-input {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #dee2e6;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.slider-input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.slider-value {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #0d6efd;
+    min-width: 24px;
+    text-align: right;
+}
+
+/* Disabled states */
+.btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Toast */
+.toast {
+    border-radius: var(--radius-sm);
+    min-width: 250px;
+}
+
+/* Modal */
+.modal-content {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    border-bottom-color: var(--border);
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .editor-wrapper {
+        flex-direction: column;
+    }
+
+    .workspace-panel {
+        min-height: 50vh;
+        max-height: 60vh;
+    }
+
+    .controls-panel {
+        width: 100%;
+        min-width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        max-height: 45vh;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .workspace-panel {
+        padding: 10px;
+        min-height: 40vh;
+    }
+
+    .controls-scroll {
+        padding: 12px;
+    }
+
+    .btn-group-custom {
+        grid-template-columns: 1fr 1fr;
+    }
+}

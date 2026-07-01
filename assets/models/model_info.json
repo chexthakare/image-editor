@@ -1,0 +1,39 @@
+{
+  "name": "mobilenetv2_224_best",
+  "img_size": 224,
+  "num_bins": 224,
+  "input_norm": "imagenet",
+  "backbone": "mobilenetv2_alpha035",
+  "outputs": [
+    {
+      "name": "keras_tensor_427",
+      "shape": [
+        null,
+        8
+      ]
+    },
+    {
+      "name": "keras_tensor_429",
+      "shape": [
+        null,
+        1
+      ]
+    },
+    {
+      "name": "keras_tensor_420",
+      "shape": [
+        null,
+        4,
+        224
+      ]
+    },
+    {
+      "name": "keras_tensor_422",
+      "shape": [
+        null,
+        4,
+        224
+      ]
+    }
+  ]
+}
